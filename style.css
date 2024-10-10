@@ -37,3 +37,9 @@ form{
     border-radius:  10px;
     background-color: rgb(219,135,186);
 }
+.g-recaptcha{
+
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
