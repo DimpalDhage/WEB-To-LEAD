@@ -1,7 +1,6 @@
 let captchachecked =false;
-if(captchachecked){
-
-  function beforesubmit(event) {
+function beforesubmit(event) {
+  if(captchachecked){
 
       let inputdate = document.querySelector(".inputdate");
       let outputdate = document.querySelector(".outputdate");
@@ -10,17 +9,18 @@ if(captchachecked){
       let formattedDate = new Date(inputdate.value).toLocaleDateString("en-IN");
       outputdate.value = formattedDate;
   }
-}
-else{
+  else{
 
-  alert("please check recaptcha before submit the form");
-  event.preventDefault();//to stop form submitting if we don't click on captcha.
+    alert("please check recaptcha before submit the form");
+    event.preventDefault();//to stop form submitting if we don't click on captcha.
+  }
 }
+
 function timestamp() {
   var response = document.getElementById("g-recaptcha-response");
   if (response == null || response.value.trim() == "") {
     var elems = JSON.parse(
-      document.getElementsByName("captcha_settings")[0].value
+      document.getElementsByName("captcha_settings")[0].vsalue
     );
     elems["ts"] = JSON.stringify(new Date().getTime());
     document.getElementsByName("captcha_settings")[0].value =
