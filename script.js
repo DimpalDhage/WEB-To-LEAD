@@ -1,4 +1,4 @@
-let captchachecked ="false";
+let captchachecked =false;
 if(captchachecked){
 
   function beforesubmit(event) {
@@ -31,5 +31,5 @@ setInterval(timestamp, 500);
 
 function captchasuccess(){
 
-  captchachecked ="true";
+  captchachecked =true;
 }
