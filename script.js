@@ -1,22 +1,36 @@
+let captchachecked =false;
+
 function beforesubmit() {
-  let inputdate = document.querySelector(".inputdate");
-  let outputdate = document.querySelector(".outputdate");
-  
-  let formattedDate = new Date(inputdate.value).toLocaleDateString("en-IN");
-  outputdate.value = formattedDate;
+
+  if(captchachecked){
+
+    let inputdate = document.querySelector(".inputdate");
+    let outputdate = document.querySelector(".outputdate");
+
+    let formattedDate = new Date(inputdate.value).toLocaleDateString("en-IN");
+    outputdate.value = formattedDate;
+  }
+  else{
+
+    alert("please check the recaptcha before submitting the form.");
+    event.preventDefault();
+  }
 }
 
 function timestamp() {
   var response = document.getElementById("g-recaptcha-response");
   if (response == null || response.value.trim() == "") {
-      var captchaSettingsElement = document.getElementsByName("captcha_settings")[0];
-      if (captchaSettingsElement && captchaSettingsElement.value) {
-          var elems = JSON.parse(captchaSettingsElement.value);
-          elems["ts"] = JSON.stringify(new Date().getTime());
-          captchaSettingsElement.value = JSON.stringify(elems);
-      } else {
-          console.log("Captcha settings element is missing or invalid.");
-      }
+    var elems = JSON.parse(
+      document.getElementsByName("captcha_settings")[0].value
+    );
+    elems["ts"] = JSON.stringify(new Date().getTime());
+    document.getElementsByName("captcha_settings")[0].value =
+      JSON.stringify(elems);
   }
 }
 setInterval(timestamp, 500);
+
+function captchasucces(){
+
+  captchachecked =true;
+}
