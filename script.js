@@ -30,7 +30,7 @@ function timestamp() {
 }
 setInterval(timestamp, 500);
 
-function captchasucces(){
+function captchasuccess(){
 
   captchachecked =true;
 }
