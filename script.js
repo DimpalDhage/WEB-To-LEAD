@@ -1,17 +1,13 @@
-let captchachecked =false;
+let captchachecked = false;
 
 function beforesubmit() {
-
-  if(captchachecked){
-
+  if (captchachecked) {
     let inputdate = document.querySelector(".inputdate");
     let outputdate = document.querySelector(".outputdate");
 
     let formattedDate = new Date(inputdate.value).toLocaleDateString("en-IN");
     outputdate.value = formattedDate;
-  }
-  else{
-
+  } else {
     alert("please check the recaptcha before submitting the form.");
     event.preventDefault();
   }
@@ -30,7 +26,6 @@ function timestamp() {
 }
 setInterval(timestamp, 500);
 
-function captchasuccess(){
-
-  captchachecked =true;
+function captchasuccess() {
+  captchachecked = true;
 }
